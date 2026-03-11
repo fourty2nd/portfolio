@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FOURTY'S DETAILS | Bot Portfolio</title>
+    <title>Fourty | Bot Portfolio</title>
     <style>
         * {
             margin: 0;
@@ -24,8 +24,8 @@
             position: fixed;
             top: 0;
             left: 0;
-            height: 2px;
-            background: linear-gradient(90deg, #2ecc71, #27ae60);
+            height: 3px;
+            background: linear-gradient(90deg, #8b92a8, #a8b0c8);
             z-index: 1001;
             transition: width 0.1s;
         }
@@ -35,32 +35,33 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(10, 14, 26, 0.92);
+            background: rgba(18, 22, 33, 0.95);
             backdrop-filter: blur(12px);
             z-index: 1000;
-            padding: 1rem 0;
-            border-bottom: 1px solid #1e293b;
+            padding: 1.2rem 0;
+            border-bottom: 1px solid #2a2f3f;
         }
 
         nav ul {
             list-style: none;
             display: flex;
             justify-content: center;
-            gap: 2.5rem;
+            gap: 3rem;
             flex-wrap: wrap;
         }
 
         nav a {
-            color: #94a3b8;
+            color: #9aa0b0;
             text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
+            font-weight: 600;
+            font-size: 1rem;
             transition: all 0.3s;
             position: relative;
+            letter-spacing: 0.5px;
         }
 
         nav a:hover {
-            color: #2ecc71;
+            color: #d0d5e0;
         }
 
         nav a::after {
@@ -70,7 +71,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: #2ecc71;
+            background: #d0d5e0;
             transition: width 0.3s;
         }
 
@@ -81,14 +82,14 @@
         /* Banner */
         .banner {
             width: 100%;
-            height: 350px;
-            background: linear-gradient(135deg, #0f172a 0%, #0a0e1a 100%);
+            height: 400px;
+            background: linear-gradient(135deg, #151929 0%, #0a0e1a 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
             overflow: hidden;
-            margin-top: 60px;
+            margin-top: 70px;
         }
 
         .banner::before {
@@ -99,98 +100,115 @@
             right: 0;
             bottom: 0;
             background: 
-                radial-gradient(circle at 20% 50%, rgba(46, 204, 113, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 80% 50%, rgba(88, 101, 242, 0.08) 0%, transparent 50%);
+                radial-gradient(circle at 20% 50%, rgba(139, 146, 168, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(168, 176, 200, 0.08) 0%, transparent 50%);
         }
 
         .banner img {
-            max-width: 80%;
+            max-width: 75%;
             height: auto;
             z-index: 1;
-            filter: drop-shadow(0 10px 40px rgba(46, 204, 113, 0.2));
+            filter: drop-shadow(0 10px 50px rgba(139, 146, 168, 0.3));
         }
 
         /* Container */
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 4rem 2rem;
+            padding: 5rem 2.5rem;
         }
 
         /* Sections */
         section {
-            margin-bottom: 6rem;
+            margin-bottom: 8rem;
             opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.9s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        section.visible {
+        section.visible-up {
             opacity: 1;
             transform: translateY(0);
         }
 
+        section.hidden-up {
+            opacity: 0;
+            transform: translateY(60px);
+        }
+
+        section.visible-down {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        section.hidden-down {
+            opacity: 0;
+            transform: translateY(-60px);
+        }
+
         h1 {
-            font-size: 2.8rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #d0d5e0, #a8b0c8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            letter-spacing: -1px;
         }
 
         h2 {
-            font-size: 2.2rem;
-            margin-bottom: 2rem;
-            color: #2ecc71;
-            border-left: 4px solid #2ecc71;
-            padding-left: 1rem;
+            font-size: 2.8rem;
+            margin-bottom: 2.5rem;
+            color: #c8cdd8;
+            border-left: 5px solid #8b92a8;
+            padding-left: 1.2rem;
+            letter-spacing: -0.5px;
         }
 
         h3 {
-            font-size: 1.4rem;
-            margin: 2rem 0 1rem;
-            color: #58d68d;
+            font-size: 1.7rem;
+            margin: 2.5rem 0 1.2rem;
+            color: #b8bec8;
         }
 
         .subtitle {
-            font-size: 1.1rem;
-            color: #94a3b8;
-            margin-bottom: 3rem;
-            max-width: 700px;
+            font-size: 1.3rem;
+            color: #9aa0b0;
+            margin-bottom: 3.5rem;
+            max-width: 750px;
+            line-height: 1.8;
         }
 
         /* Code Blocks */
         .code-container {
-            background: #0f172a;
-            border-radius: 12px;
+            background: #111525;
+            border-radius: 16px;
             padding: 0;
-            margin: 2rem 0;
-            border: 1px solid #1e293b;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            margin: 2.5rem 0;
+            border: 1px solid #2a2f3f;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
             position: relative;
             overflow: hidden;
-            transition: all 0.3s;
+            transition: all 0.4s;
         }
 
         .code-container:hover {
-            transform: translateY(-3px);
-            border-color: #2ecc71;
-            box-shadow: 0 15px 50px rgba(46, 204, 113, 0.15);
+            transform: translateY(-5px) scale(1.01);
+            border-color: #8b92a8;
+            box-shadow: 0 20px 60px rgba(139, 146, 168, 0.2);
         }
 
         .code-header {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1rem;
+            gap: 0.6rem;
+            padding: 1rem 1.3rem;
             background: #0a0e1a;
-            border-bottom: 1px solid #1e293b;
+            border-bottom: 1px solid #2a2f3f;
         }
 
         .dot {
-            width: 11px;
-            height: 11px;
+            width: 13px;
+            height: 13px;
             border-radius: 50%;
         }
 
@@ -200,129 +218,131 @@
 
         .filename {
             margin-left: 1rem;
-            color: #64748b;
-            font-size: 0.85rem;
+            color: #6b7280;
+            font-size: 0.9rem;
             font-family: 'Fira Code', 'Consolas', monospace;
         }
 
         pre {
-            padding: 1.5rem;
+            padding: 2rem;
             overflow-x: auto;
             font-family: 'Fira Code', 'Consolas', monospace;
-            font-size: 0.88rem;
-            line-height: 1.9;
+            font-size: 1rem;
+            line-height: 2;
         }
 
-        code { color: #a5b4fc; }
-        .keyword { color: #c084fc; }
-        .function { color: #60a5fa; }
-        .string { color: #86efac; }
-        .comment { color: #64748b; font-style: italic; }
-        .decorator { color: #fbbf24; }
-        .number { color: #f472b6; }
-        .class { color: #f9a8d4; }
-        .param { color: #93c5fd; }
+        code { color: #c8b8e8; }
+        .keyword { color: #d8a8f8; }
+        .function { color: #88b8ff; }
+        .string { color: #a8e8c8; }
+        .comment { color: #6b7280; font-style: italic; }
+        .decorator { color: #ffd888; }
+        .number { color: #ff98c8; }
+        .class { color: #f8c8e8; }
+        .param { color: #b8d8ff; }
 
         /* Feature Cards */
         .features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
         }
 
         .feature-card {
-            background: #0f172a;
-            padding: 1.8rem;
-            border-radius: 12px;
-            border: 1px solid #1e293b;
-            transition: all 0.3s;
+            background: #111525;
+            padding: 2.2rem;
+            border-radius: 16px;
+            border: 1px solid #2a2f3f;
+            transition: all 0.4s;
         }
 
         .feature-card:hover {
-            transform: translateY(-5px);
-            border-color: #2ecc71;
-            box-shadow: 0 10px 30px rgba(46, 204, 113, 0.1);
+            transform: translateY(-8px);
+            border-color: #8b92a8;
+            box-shadow: 0 15px 40px rgba(139, 146, 168, 0.15);
         }
 
         .feature-card h3 {
             margin-top: 0;
-            color: #2ecc71;
-            font-size: 1.2rem;
+            color: #c8cdd8;
+            font-size: 1.4rem;
         }
 
         .feature-card p {
-            color: #94a3b8;
-            font-size: 0.95rem;
+            color: #9aa0b0;
+            font-size: 1rem;
+            line-height: 1.7;
         }
 
         /* Stats */
         .stats {
             display: flex;
             justify-content: space-around;
-            gap: 2rem;
-            margin: 3rem 0;
+            gap: 2.5rem;
+            margin: 4rem 0;
             flex-wrap: wrap;
         }
 
         .stat-item {
             text-align: center;
-            padding: 2rem;
-            background: #0f172a;
-            border-radius: 12px;
-            border: 1px solid #1e293b;
-            min-width: 180px;
-            transition: all 0.3s;
+            padding: 2.5rem;
+            background: #111525;
+            border-radius: 16px;
+            border: 1px solid #2a2f3f;
+            min-width: 200px;
+            transition: all 0.4s;
         }
 
         .stat-item:hover {
-            border-color: #2ecc71;
-            transform: translateY(-3px);
+            border-color: #8b92a8;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(139, 146, 168, 0.15);
         }
 
         .stat-number {
-            font-size: 2.8rem;
+            font-size: 3.5rem;
             font-weight: bold;
-            color: #2ecc71;
+            color: #c8cdd8;
             display: block;
         }
 
         .stat-label {
-            color: #94a3b8;
-            margin-top: 0.5rem;
-            font-size: 0.95rem;
+            color: #9aa0b0;
+            margin-top: 0.7rem;
+            font-size: 1.05rem;
         }
 
         /* Footer */
         footer {
             text-align: center;
-            padding: 3rem 2rem;
+            padding: 4rem 2rem;
             background: #0a0e1a;
-            border-top: 1px solid #1e293b;
+            border-top: 1px solid #2a2f3f;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 1rem;
+            gap: 1.2rem;
         }
 
         .footer-content {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 1.2rem;
             justify-content: center;
             flex-wrap: wrap;
         }
 
         .footer-text {
             font-style: italic;
-            color: rgba(148, 163, 184, 0.6);
-            font-size: 0.95rem;
+            color: rgba(154, 160, 176, 0.5);
+            font-size: 1.05rem;
         }
 
         .footer-logo {
-            width: 40px;
-            height: 40px;
-            opacity: 0.6;
+            width: 45px;
+            height: 45px;
+            opacity: 0.5;
             transition: opacity 0.3s;
         }
 
@@ -331,18 +351,20 @@
         }
 
         .footer-bottom {
-            color: rgba(148, 163, 184, 0.4);
-            font-size: 0.85rem;
+            color: rgba(154, 160, 176, 0.35);
+            font-size: 0.9rem;
             margin-top: 0.5rem;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            h1 { font-size: 2rem; }
-            h2 { font-size: 1.8rem; }
-            nav ul { gap: 1.5rem; font-size: 0.85rem; }
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            nav ul { gap: 2rem; font-size: 0.9rem; }
             .features { grid-template-columns: 1fr; }
-            .banner { height: 250px; }
+            .banner { height: 300px; }
+            .container { padding: 3rem 1.5rem; }
+            section { margin-bottom: 5rem; }
         }
     </style>
 </head>
@@ -359,13 +381,13 @@
     </nav>
 
     <div class="banner">
-        <img src="your-banner.png" alt="FOURTY'S DETAILS">
+        <img src="https://i.ibb.co/HLNGSGSP/fourty-3.png" alt="Fourty">
     </div>
 
     <div class="container">
         <!-- Overview Section -->
         <section id="overview">
-            <h1>FOURTY'S DETAILS</h1>
+            <h1>Fourty</h1>
             <p class="subtitle">
                 A production-ready Discord bot built for professional server management, 
                 ticket systems, and community automation. Written in Python with discord.py.
@@ -425,7 +447,7 @@
                 Selected snippets from main.py showcasing clean architecture and production patterns.
             </p>
 
-            <h3>🔐 Configuration & Constants</h3>
+            <h3>🎫 Ticket System Logic</h3>
             <div class="code-container">
                 <div class="code-header">
                     <div class="dot dot-red"></div>
@@ -433,14 +455,29 @@
                     <div class="dot dot-green"></div>
                     <span class="filename">main.py</span>
                 </div>
-                <pre><code><span class="comment"># Secure token loading from environment</span>
-<span class="keyword">TOKEN</span>: Optional[<span class="class">str</span>] = os.environ.get(<span class="string">"DISCORD_TOKEN"</span>)
-<span class="keyword">if not</span> TOKEN:
-    <span class="keyword">raise</span> ValueError(<span class="string">"⚠️ DISCORD_TOKEN not found!"</span>)
-
-<span class="comment"># Color scheme for consistent branding</span>
-<span class="keyword">COLOR_PRIMARY</span> = discord.Color.from_rgb(<span class="number">46</span>, <span class="number">204</span>, <span class="number">113</span>)
-<span class="keyword">COLOR_ACCENT</span> = discord.Color.from_rgb(<span class="number">88</span>, <span class="number">101</span>, <span class="number">242</span>)</code></pre>
+                <pre><code><span class="keyword">async def</span> <span class="function">close_ticket</span>(<span class="param">channel</span>, <span class="param">closer</span>):
+    <span class="keyword">if</span> channel.id <span class="keyword">in</span> CLOSING_CHANNELS: 
+        <span class="keyword">return</span> <span class="keyword">False</span>, <span class="string">"Already closing."</span>
+    
+    CLOSING_CHANNELS.add(channel.id)
+    transcript = <span class="keyword">await</span> create_transcript(channel, <span class="function">str</span>(closer))
+    
+    config = get_config(channel.guild.id)
+    log_id = config.get(<span class="string">"transcript_channel"</span>)
+    
+    ticket_info = TICKET_DATA.get(channel.id, {})
+    opener_id = ticket_info.get(<span class="string">"opener_id"</span>)
+    rating = get_ticket_rating(channel.name)
+    
+    <span class="keyword">if</span> log_id:
+        log_chan = bot.get_channel(log_id)
+        log_embed = discord.Embed(
+            title=<span class="string">"📕 Ticket Closed"</span>,
+            color=COLOR_SECONDARY,
+            timestamp=datetime.datetime.now(datetime.timezone.utc)
+        )
+        log_embed.add_field(name=<span class="string">"⭐ Rating"</span>, value=rating)
+        <span class="keyword">await</span> log_chan.send(embed=log_embed, file=transcript)</code></pre>
             </div>
 
             <h3>💾 Persistent Data Storage</h3>
@@ -452,41 +489,24 @@
                     <span class="filename">main.py</span>
                 </div>
                 <pre><code><span class="keyword">def</span> <span class="function">load_json</span>(<span class="param">fn</span>, <span class="param">default</span>):
-    <span class="string">"""Load JSON with auto-creation if missing"""</span>
     <span class="keyword">if not</span> os.path.exists(fn):
         <span class="keyword">with</span> open(fn, <span class="string">"w"</span>) <span class="keyword">as</span> f: 
             json.dump(default, f, indent=<span class="number">2</span>)
         <span class="keyword">return</span> default
+    
     <span class="keyword">try</span>:
         <span class="keyword">with</span> open(fn, <span class="string">"r"</span>) <span class="keyword">as</span> f: 
             <span class="keyword">return</span> json.load(f)
     <span class="keyword">except</span>: 
-        <span class="keyword">return</span> default</code></pre>
+        <span class="keyword">return</span> default
+
+<span class="keyword">def</span> <span class="function">save_ticket_rating</span>(<span class="param">channel_name</span>, <span class="param">rating</span>):
+    ratings = load_json(RATINGS_FILE, {})
+    ratings[channel_name] = rating
+    save_json(RATINGS_FILE, ratings)</code></pre>
             </div>
 
-            <h3>🎫 Ticket System Logic</h3>
-            <div class="code-container">
-                <div class="code-header">
-                    <div class="dot dot-red"></div>
-                    <div class="dot dot-yellow"></div>
-                    <div class="dot dot-green"></div>
-                    <span class="filename">main.py</span>
-                </div>
-                <pre><code><span class="keyword">async def</span> <span class="function">close_ticket</span>(<span class="param">channel</span>, <span class="param">closer</span>):
-    <span class="string">"""Close ticket with transcript and rating"""</span>
-    transcript = <span class="keyword">await</span> create_transcript(channel, <span class="function">str</span>(closer))
-    rating = <span class="function">get_ticket_rating</span>(channel.name)
-    
-    <span class="comment"># Log with rating to configured channel</span>
-    log_embed = discord.Embed(
-        title=<span class="string">"📕 Ticket Closed"</span>,
-        color=COLOR_SECONDARY,
-        timestamp=datetime.datetime.now(datetime.timezone.utc)
-    )
-    log_embed.add_field(name=<span class="string">"⭐ Rating"</span>, value=rating)</code></pre>
-            </div>
-
-            <h3>🛡️ Moderation with Hierarchy Check</h3>
+            <h3>🛡️ Moderation with Hierarchy</h3>
             <div class="code-container">
                 <div class="code-header">
                     <div class="dot dot-red"></div>
@@ -495,31 +515,26 @@
                     <span class="filename">main.py</span>
                 </div>
                 <pre><code><span class="keyword">def</span> <span class="function">check_hierarchy</span>(<span class="param">author</span>, <span class="param">target</span>):
-    <span class="string">"""Prevent moderating users above your role"""</span>
     <span class="keyword">if</span> target.id == author.guild.owner_id: 
-        <span class="keyword">return</span> False
+        <span class="keyword">return</span> <span class="keyword">False</span>
     <span class="keyword">if</span> author.id == author.guild.owner_id: 
-        <span class="keyword">return</span> True
-    <span class="keyword">return</span> author.top_role > target.top_role</code></pre>
-            </div>
+        <span class="keyword">return</span> <span class="keyword">True</span>
+    <span class="keyword">return</span> author.top_role > target.top_role
 
-            <h3> Flask Health Check Server</h3>
-            <div class="code-container">
-                <div class="code-header">
-                    <div class="dot dot-red"></div>
-                    <div class="dot dot-yellow"></div>
-                    <div class="dot dot-green"></div>
-                    <span class="filename">main.py</span>
-                </div>
-                <pre><code><span class="comment"># Keep bot alive with Flask web server</span>
-flask_app = Flask(__name__)
-
-<span class="decorator">@flask_app.route</span>(<span class="string">"/"</span>)
-<span class="keyword">def</span> <span class="function">home</span>(): 
-    <span class="keyword">return</span> <span class="string">"✅ Fourty's Details Bot Online"</span>
-
-<span class="keyword">def</span> <span class="function">keep_alive</span>(): 
-    Thread(target=run_flask, daemon=<span class="keyword">True</span>).start()</code></pre>
+<span class="keyword">async def</span> <span class="function">log_moderation</span>(<span class="param">guild</span>, <span class="param">action</span>, <span class="param">member</span>, <span class="param">moderator</span>, <span class="param">reason</span>=<span class="keyword">None</span>):
+    config = get_config(guild.id)
+    channel_id = config.get(<span class="string">"moderation_log_channel"</span>)
+    
+    <span class="keyword">if not</span> channel_id: 
+        <span class="keyword">return</span>
+    
+    embed = discord.Embed(
+        title=<span class="string">f"🛡️ {action}"</span>,
+        color=COLOR_SECONDARY,
+        timestamp=datetime.datetime.now(datetime.timezone.utc)
+    )
+    embed.add_field(name=<span class="string">"👤 User"</span>, value=member.mention)
+    <span class="keyword">await</span> channel.send(embed=embed)</code></pre>
             </div>
 
             <h3>📢 Announcement Builder Modal</h3>
@@ -531,15 +546,47 @@ flask_app = Flask(__name__)
                     <span class="filename">main.py</span>
                 </div>
                 <pre><code><span class="keyword">class</span> <span class="function">AnnouncementModal</span>(Modal, title=<span class="string">"📝 Announcement Builder"</span>):
-    title_input = TextInput(label=<span class="string">"Title"</span>, required=<span class="keyword">True</span>)
+    title_input = TextInput(
+        label=<span class="string">"Title"</span>, 
+        required=<span class="keyword">True</span>
+    )
     description_input = TextInput(
         label=<span class="string">"Description"</span>, 
         style=discord.TextStyle.long
     )
-    color_input = TextInput(label=<span class="string">"Color"</span>, required=<span class="keyword">False</span>)
+    color_input = TextInput(
+        label=<span class="string">"Color"</span>, 
+        required=<span class="keyword">False</span>
+    )
     
-    <span class="keyword">async def</span> <span class="function">on_submit</span>(<span class="keyword">self</span>, interaction: Interaction):
-        <span class="comment"># Build and cache embed for preview/submit</span></code></pre>
+    <span class="keyword">async def</span> <span class="function">on_submit</span>(<span class="keyword">self</span>, interaction):
+        embed = discord.Embed(
+            title=<span class="keyword">self</span>.title_input.value,
+            description=<span class="keyword">self</span>.description_input.value,
+            color=COLOR_SECONDARY
+        )
+        ANNOUNCEMENT_CACHE[interaction.user.id][<span class="string">"embed"</span>] = embed</code></pre>
+            </div>
+
+            <h3> Flask Health Server</h3>
+            <div class="code-container">
+                <div class="code-header">
+                    <div class="dot dot-red"></div>
+                    <div class="dot dot-yellow"></div>
+                    <div class="dot dot-green"></div>
+                    <span class="filename">main.py</span>
+                </div>
+                <pre><code>flask_app = Flask(__name__)
+
+<span class="decorator">@flask_app.route</span>(<span class="string">"/"</span>)
+<span class="keyword">def</span> <span class="function">home</span>(): 
+    <span class="keyword">return</span> <span class="string">"✅ Fourty's Details Bot Online"</span>
+
+<span class="keyword">def</span> <span class="function">run_flask</span>(): 
+    flask_app.run(host=<span class="string">"0.0.0.0"</span>, port=<span class="number">8080</span>, debug=<span class="keyword">False</span>)
+
+<span class="keyword">def</span> <span class="function">keep_alive</span>(): 
+    Thread(target=run_flask, daemon=<span class="keyword">True</span>).start()</code></pre>
             </div>
         </section>
 
@@ -582,29 +629,52 @@ flask_app = Flask(__name__)
     <footer>
         <div class="footer-content">
             <span class="footer-text">Programmed & Coded with 🤍 by fourty2</span>
-            <img src="logo.png" alt="FOURTY Logo" class="footer-logo">
+            <img src="https://i.ibb.co/HLNGSGSP/fourty-3.png" alt="Fourty Logo" class="footer-logo">
         </div>
         <div class="footer-bottom">
-            © 2026 FOURTY'S DETAILS • All Rights Reserved
+            © 2026 Fourty • All Rights Reserved
         </div>
     </footer>
 
     <script>
-        // Scroll Animation Observer
+        // Enhanced Scroll Animation Observer with Direction Detection
+        let lastScrollTop = 0;
+        const sections = document.querySelectorAll('section');
+        
         const observerOptions = {
-            threshold: 0.1,
-            rootMargin: "0px 0px -80px 0px"
+            threshold: 0.15,
+            rootMargin: "0px 0px -100px 0px"
         };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
+                const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                const isScrollingDown = currentScrollTop > lastScrollTop;
+                
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+                    if (isScrollingDown) {
+                        entry.target.classList.remove('hidden-up', 'visible-down', 'hidden-down');
+                        entry.target.classList.add('visible-up');
+                    } else {
+                        entry.target.classList.remove('hidden-down', 'visible-up', 'hidden-up');
+                        entry.target.classList.add('visible-down');
+                    }
+                } else {
+                    if (isScrollingDown) {
+                        entry.target.classList.remove('visible-up');
+                        entry.target.classList.add('hidden-up');
+                    } else {
+                        entry.target.classList.remove('visible-down');
+                        entry.target.classList.add('hidden-down');
+                    }
                 }
+                
+                lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
             });
         }, observerOptions);
 
-        document.querySelectorAll('section').forEach(section => {
+        sections.forEach(section => {
+            section.classList.add('hidden-up');
             observer.observe(section);
         });
 
@@ -626,6 +696,31 @@ flask_app = Flask(__name__)
                         behavior: 'smooth',
                         block: 'start'
                     });
+                }
+            });
+        });
+
+        // Touch device optimization
+        let touchStartY = 0;
+        document.addEventListener('touchstart', (e) => {
+            touchStartY = e.touches[0].clientY;
+        });
+
+        document.addEventListener('touchmove', (e) => {
+            const touchY = e.touches[0].clientY;
+            const touchDelta = touchStartY - touchY;
+            
+            sections.forEach(section => {
+                if (section.classList.contains('visible-up') || section.classList.contains('visible-down')) {
+                    const rect = section.getBoundingClientRect();
+                    if (rect.top > window.innerHeight || rect.bottom < 0) {
+                        section.classList.remove('visible-up', 'visible-down');
+                        if (touchDelta > 0) {
+                            section.classList.add('hidden-up');
+                        } else {
+                            section.classList.add('hidden-down');
+                        }
+                    }
                 }
             });
         });
