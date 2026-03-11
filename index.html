@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FOURTY'S DETAILS | Bot Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Inter', system-ui, sans-serif;
+            background: #0a0e1a;
+            color: #e2e8f0;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Scroll Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #2ecc71, #27ae60);
+            z-index: 1001;
+            transition: width 0.1s;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 14, 26, 0.92);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: #2ecc71;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #2ecc71;
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Banner */
+        .banner {
+            width: 100%;
+            height: 350px;
+            background: linear-gradient(135deg, #0f172a 0%, #0a0e1a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 60px;
+        }
+
+        .banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(46, 204, 113, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(88, 101, 242, 0.08) 0%, transparent 50%);
+        }
+
+        .banner img {
+            max-width: 80%;
+            height: auto;
+            z-index: 1;
+            filter: drop-shadow(0 10px 40px rgba(46, 204, 113, 0.2));
+        }
+
+        /* Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 6rem;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            color: #2ecc71;
+            border-left: 4px solid #2ecc71;
+            padding-left: 1rem;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            margin: 2rem 0 1rem;
+            color: #58d68d;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #94a3b8;
+            margin-bottom: 3rem;
+            max-width: 700px;
+        }
+
+        /* Code Blocks */
+        .code-container {
+            background: #0f172a;
+            border-radius: 12px;
+            padding: 0;
+            margin: 2rem 0;
+            border: 1px solid #1e293b;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .code-container:hover {
+            transform: translateY(-3px);
+            border-color: #2ecc71;
+            box-shadow: 0 15px 50px rgba(46, 204, 113, 0.15);
+        }
+
+        .code-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            background: #0a0e1a;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .dot {
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+        }
+
+        .dot-red { background: #ef4444; }
+        .dot-yellow { background: #eab308; }
+        .dot-green { background: #22c55e; }
+
+        .filename {
+            margin-left: 1rem;
+            color: #64748b;
+            font-size: 0.85rem;
+            font-family: 'Fira Code', 'Consolas', monospace;
+        }
+
+        pre {
+            padding: 1.5rem;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 0.88rem;
+            line-height: 1.9;
+        }
+
+        code { color: #a5b4fc; }
+        .keyword { color: #c084fc; }
+        .function { color: #60a5fa; }
+        .string { color: #86efac; }
+        .comment { color: #64748b; font-style: italic; }
+        .decorator { color: #fbbf24; }
+        .number { color: #f472b6; }
+        .class { color: #f9a8d4; }
+        .param { color: #93c5fd; }
+
+        /* Feature Cards */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: #0f172a;
+            padding: 1.8rem;
+            border-radius: 12px;
+            border: 1px solid #1e293b;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: #2ecc71;
+            box-shadow: 0 10px 30px rgba(46, 204, 113, 0.1);
+        }
+
+        .feature-card h3 {
+            margin-top: 0;
+            color: #2ecc71;
+            font-size: 1.2rem;
+        }
+
+        .feature-card p {
+            color: #94a3b8;
+            font-size: 0.95rem;
+        }
+
+        /* Stats */
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            gap: 2rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            background: #0f172a;
+            border-radius: 12px;
+            border: 1px solid #1e293b;
+            min-width: 180px;
+            transition: all 0.3s;
+        }
+
+        .stat-item:hover {
+            border-color: #2ecc71;
+            transform: translateY(-3px);
+        }
+
+        .stat-number {
+            font-size: 2.8rem;
+            font-weight: bold;
+            color: #2ecc71;
+            display: block;
+        }
+
+        .stat-label {
+            color: #94a3b8;
+            margin-top: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: #0a0e1a;
+            border-top: 1px solid #1e293b;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .footer-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .footer-text {
+            font-style: italic;
+            color: rgba(148, 163, 184, 0.6);
+            font-size: 0.95rem;
+        }
+
+        .footer-logo {
+            width: 40px;
+            height: 40px;
+            opacity: 0.6;
+            transition: opacity 0.3s;
+        }
+
+        .footer-logo:hover {
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            color: rgba(148, 163, 184, 0.4);
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.8rem; }
+            nav ul { gap: 1.5rem; font-size: 0.85rem; }
+            .features { grid-template-columns: 1fr; }
+            .banner { height: 250px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+    
+    <nav>
+        <ul>
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#code">Code</a></li>
+            <li><a href="#commands">Commands</a></li>
+        </ul>
+    </nav>
+
+    <div class="banner">
+        <img src="your-banner.png" alt="FOURTY'S DETAILS">
+    </div>
+
+    <div class="container">
+        <!-- Overview Section -->
+        <section id="overview">
+            <h1>FOURTY'S DETAILS</h1>
+            <p class="subtitle">
+                A production-ready Discord bot built for professional server management, 
+                ticket systems, and community automation. Written in Python with discord.py.
+            </p>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-number">50+</span>
+                    <div class="stat-label">Commands</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">4.0</span>
+                    <div class="stat-label">Version</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">24/7</span>
+                    <div class="stat-label">Uptime</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features">
+            <h2>Core Features</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <h3>🎫 Advanced Ticket System</h3>
+                    <p>Multi-category ticket support with persistent data storage, ratings, and automatic transcripts.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🛡️ Moderation Tools</h3>
+                    <p>Complete moderation suite with mute, kick, ban, timeout, and detailed action logging.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📊 JSON Database</h3>
+                    <p>Persistent configuration and data storage with automatic backup and recovery.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🔧 Dual Command System</h3>
+                    <p>Both slash commands and prefix commands for maximum flexibility.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📢 Announcement Builder</h3>
+                    <p>Discohook-style announcement creator with preview, edit, and scheduling.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🌐 Flask Integration</h3>
+                    <p>Built-in web server for health checks and external integrations.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Code Section -->
+        <section id="code">
+            <h2>Code Highlights</h2>
+            <p class="subtitle">
+                Selected snippets from main.py showcasing clean architecture and production patterns.
+            </p>
+
+            <h3>🔐 Configuration & Constants</h3>
+            <div class="code-container">
+                <div class="code-header">
+                    <div class="dot dot-red"></div>
+                    <div class="dot dot-yellow"></div>
+                    <div class="dot dot-green"></div>
+                    <span class="filename">main.py</span>
+                </div>
+                <pre><code><span class="comment"># Secure token loading from environment</span>
+<span class="keyword">TOKEN</span>: Optional[<span class="class">str</span>] = os.environ.get(<span class="string">"DISCORD_TOKEN"</span>)
+<span class="keyword">if not</span> TOKEN:
+    <span class="keyword">raise</span> ValueError(<span class="string">"⚠️ DISCORD_TOKEN not found!"</span>)
+
+<span class="comment"># Color scheme for consistent branding</span>
+<span class="keyword">COLOR_PRIMARY</span> = discord.Color.from_rgb(<span class="number">46</span>, <span class="number">204</span>, <span class="number">113</span>)
+<span class="keyword">COLOR_ACCENT</span> = discord.Color.from_rgb(<span class="number">88</span>, <span class="number">101</span>, <span class="number">242</span>)</code></pre>
+            </div>
+
+            <h3>💾 Persistent Data Storage</h3>
+            <div class="code-container">
+                <div class="code-header">
+                    <div class="dot dot-red"></div>
+                    <div class="dot dot-yellow"></div>
+                    <div class="dot dot-green"></div>
+                    <span class="filename">main.py</span>
+                </div>
+                <pre><code><span class="keyword">def</span> <span class="function">load_json</span>(<span class="param">fn</span>, <span class="param">default</span>):
+    <span class="string">"""Load JSON with auto-creation if missing"""</span>
+    <span class="keyword">if not</span> os.path.exists(fn):
+        <span class="keyword">with</span> open(fn, <span class="string">"w"</span>) <span class="keyword">as</span> f: 
+            json.dump(default, f, indent=<span class="number">2</span>)
+        <span class="keyword">return</span> default
+    <span class="keyword">try</span>:
+        <span class="keyword">with</span> open(fn, <span class="string">"r"</span>) <span class="keyword">as</span> f: 
+            <span class="keyword">return</span> json.load(f)
+    <span class="keyword">except</span>: 
+        <span class="keyword">return</span> default</code></pre>
+            </div>
+
+            <h3>🎫 Ticket System Logic</h3>
+            <div class="code-container">
+                <div class="code-header">
+                    <div class="dot dot-red"></div>
+                    <div class="dot dot-yellow"></div>
+                    <div class="dot dot-green"></div>
+                    <span class="filename">main.py</span>
+                </div>
+                <pre><code><span class="keyword">async def</span> <span class="function">close_ticket</span>(<span class="param">channel</span>, <span class="param">closer</span>):
+    <span class="string">"""Close ticket with transcript and rating"""</span>
+    transcript = <span class="keyword">await</span> create_transcript(channel, <span class="function">str</span>(closer))
+    rating = <span class="function">get_ticket_rating</span>(channel.name)
+    
+    <span class="comment"># Log with rating to configured channel</span>
+    log_embed = discord.Embed(
+        title=<span class="string">"📕 Ticket Closed"</span>,
+        color=COLOR_SECONDARY,
+        timestamp=datetime.datetime.now(datetime.timezone.utc)
+    )
+    log_embed.add_field(name=<span class="string">"⭐ Rating"</span>, value=rating)</code></pre>
+            </div>
+
+            <h3>🛡️ Moderation with Hierarchy Check</h3>
+            <div class="code-container">
+                <div class="code-header">
+                    <div class="dot dot-red"></div>
+                    <div class="dot dot-yellow"></div>
+                    <div class="dot dot-green"></div>
+                    <span class="filename">main.py</span>
+                </div>
+                <pre><code><span class="keyword">def</span> <span class="function">check_hierarchy</span>(<span class="param">author</span>, <span class="param">target</span>):
+    <span class="string">"""Prevent moderating users above your role"""</span>
+    <span class="keyword">if</span> target.id == author.guild.owner_id: 
+        <span class="keyword">return</span> False
+    <span class="keyword">if</span> author.id == author.guild.owner_id: 
+        <span class="keyword">return</span> True
+    <span class="keyword">return</span> author.top_role > target.top_role</code></pre>
+            </div>
+
+            <h3> Flask Health Check Server</h3>
+            <div class="code-container">
+                <div class="code-header">
+                    <div class="dot dot-red"></div>
+                    <div class="dot dot-yellow"></div>
+                    <div class="dot dot-green"></div>
+                    <span class="filename">main.py</span>
+                </div>
+                <pre><code><span class="comment"># Keep bot alive with Flask web server</span>
+flask_app = Flask(__name__)
+
+<span class="decorator">@flask_app.route</span>(<span class="string">"/"</span>)
+<span class="keyword">def</span> <span class="function">home</span>(): 
+    <span class="keyword">return</span> <span class="string">"✅ Fourty's Details Bot Online"</span>
+
+<span class="keyword">def</span> <span class="function">keep_alive</span>(): 
+    Thread(target=run_flask, daemon=<span class="keyword">True</span>).start()</code></pre>
+            </div>
+
+            <h3>📢 Announcement Builder Modal</h3>
+            <div class="code-container">
+                <div class="code-header">
+                    <div class="dot dot-red"></div>
+                    <div class="dot dot-yellow"></div>
+                    <div class="dot dot-green"></div>
+                    <span class="filename">main.py</span>
+                </div>
+                <pre><code><span class="keyword">class</span> <span class="function">AnnouncementModal</span>(Modal, title=<span class="string">"📝 Announcement Builder"</span>):
+    title_input = TextInput(label=<span class="string">"Title"</span>, required=<span class="keyword">True</span>)
+    description_input = TextInput(
+        label=<span class="string">"Description"</span>, 
+        style=discord.TextStyle.long
+    )
+    color_input = TextInput(label=<span class="string">"Color"</span>, required=<span class="keyword">False</span>)
+    
+    <span class="keyword">async def</span> <span class="function">on_submit</span>(<span class="keyword">self</span>, interaction: Interaction):
+        <span class="comment"># Build and cache embed for preview/submit</span></code></pre>
+            </div>
+        </section>
+
+        <!-- Commands Section -->
+        <section id="commands">
+            <h2>Available Commands</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <h3>🎫 Ticket Commands</h3>
+                    <p><code>/panel</code> - Display ticket panel<br>
+                    <code>/close</code> - Close current ticket<br>
+                    <code>/add</code> - Add user to ticket<br>
+                    <code>/remove</code> - Remove user from ticket</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🛡️ Moderation</h3>
+                    <p><code>/mute</code> - Timeout a user<br>
+                    <code>/kick</code> - Kick from server<br>
+                    <code>/ban</code> - Ban from server<br>
+                    <code>/purge</code> - Delete messages</p>
+                </div>
+                <div class="feature-card">
+                    <h3>⚙️ Utilities</h3>
+                    <p><code>/whois</code> - User information<br>
+                    <code>/serverinfo</code> - Server stats<br>
+                    <code>/announce</code> - Create announcement<br>
+                    <code>/poll</code> - Create poll</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📦 Packages</h3>
+                    <p><code>/pk1</code> - Package 1 questionnaire<br>
+                    <code>/pk2</code> - Package 2 questionnaire<br>
+                    <code>/cb</code> - Custom Bot questionnaire<br>
+                    <code>/cfs</code> - FiveM Script questionnaire</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <span class="footer-text">Programmed & Coded with 🤍 by fourty2</span>
+            <img src="logo.png" alt="FOURTY Logo" class="footer-logo">
+        </div>
+        <div class="footer-bottom">
+            © 2026 FOURTY'S DETAILS • All Rights Reserved
+        </div>
+    </footer>
+
+    <script>
+        // Scroll Animation Observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -80px 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Progress Bar
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progressBar').style.width = scrolled + '%';
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
