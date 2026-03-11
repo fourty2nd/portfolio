@@ -82,8 +82,8 @@
         /* Banner */
         .banner {
             width: 100%;
-            height: 400px;
-            background: linear-gradient(135deg, #151929 0%, #0a0e1a 100%);
+            height: 450px;
+            background: linear-gradient(180deg, #0f1419 0%, #0a0e1a 100%);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -100,15 +100,54 @@
             right: 0;
             bottom: 0;
             background: 
-                radial-gradient(circle at 20% 50%, rgba(139, 146, 168, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 80% 50%, rgba(168, 176, 200, 0.08) 0%, transparent 50%);
+                radial-gradient(circle at 30% 40%, rgba(139, 146, 168, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 70% 60%, rgba(168, 176, 200, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(139, 146, 168, 0.08) 0%, transparent 60%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        .banner::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(139, 146, 168, 0.03) 2px,
+                    rgba(139, 146, 168, 0.03) 4px
+                );
+            pointer-events: none;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
         }
 
         .banner img {
-            max-width: 75%;
+            max-width: 70%;
             height: auto;
             z-index: 1;
-            filter: drop-shadow(0 10px 50px rgba(139, 146, 168, 0.3));
+            opacity: 0;
+            filter: drop-shadow(0 20px 60px rgba(139, 146, 168, 0.4)) brightness(0.95);
+            animation: logoFadeIn 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            animation-delay: 0.3s;
+        }
+
+        @keyframes logoFadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
+            100% {
+                opacity: 0.85;
+                transform: translateY(0) scale(1);
+            }
         }
 
         /* Container */
@@ -362,7 +401,7 @@
             h2 { font-size: 2rem; }
             nav ul { gap: 2rem; font-size: 0.9rem; }
             .features { grid-template-columns: 1fr; }
-            .banner { height: 300px; }
+            .banner { height: 350px; }
             .container { padding: 3rem 1.5rem; }
             section { margin-bottom: 5rem; }
         }
