@@ -431,14 +431,19 @@
         /* Subtle Corner Indicator */
         .corner-indicator {
             position: fixed;
-            bottom: 10px;
-            right: 10px;
-            width: 16px;
-            height: 16px;
-            opacity: 0.2;
+            bottom: 5px;
+            right: 5px;
+            width: 20px;
+            height: 20px;
+            opacity: 0.5;
             pointer-events: none;
             z-index: 999;
             transition: opacity 0.3s;
+}
+
+.corner-indicator:hover {
+    opacity: 0.8;
+}
         }
 
         .corner-indicator:hover {
@@ -544,7 +549,7 @@
         <section id="code">
             <h2>Code Highlights</h2>
             <p class="subtitle">
-                Selected snippets from main.py showcasing clean architecture and production patterns.
+                Some interesting parts of the bot's code that I found a little too good to be left out.
             </p>
 
             <h3>🎫 Ticket System Logic</h3>
