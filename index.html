@@ -4,6 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fourty | Bot Portfolio</title>
+    
+    <!-- Open Graph Meta Tags for Discord Embed -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fourty2nd.github.io/portfolio">
+    <meta property="og:title" content="Fourty's Portfolio">
+    <meta property="og:description" content="A bot designed with pure logic and love, made professionally and precisely.">
+    <meta property="og:image" content="https://i.ibb.co/HLNGSGSP/fourty-3.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Fourty">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://i.ibb.co/HLNGSGSP/fourty-3.png">
+    
     <style>
         * {
             margin: 0;
@@ -428,26 +443,21 @@
             opacity: 1;
         }
 
-        /* Subtle Corner Indicator */
+        /* Corner Indicator */
         .corner-indicator {
             position: fixed;
             bottom: 5px;
             right: 5px;
-            width: 20px;
-            height: 20px;
-            opacity: 0.5;
+            width: 22px;
+            height: 22px;
+            opacity: 0.6;
             pointer-events: none;
             z-index: 999;
             transition: opacity 0.3s;
-}
-
-.corner-indicator:hover {
-    opacity: 0.8;
-}
         }
 
         .corner-indicator:hover {
-            opacity: 0.4;
+            opacity: 1;
         }
 
         .corner-indicator img {
@@ -470,11 +480,6 @@
 </head>
 <body>
     <div class="progress-bar" id="progressBar"></div>
-    
-    <!-- Subtle Corner Indicator -->
-    <div class="corner-indicator" title="Fourty">
-        <img src="https://i.ibb.co/0wtMrj9/IMG-8441.png" alt="Fourty">
-    </div>
     
     <nav>
         <ul>
@@ -549,7 +554,7 @@
         <section id="code">
             <h2>Code Highlights</h2>
             <p class="subtitle">
-                Some interesting parts of the bot's code that I found a little too good to be left out.
+                Real code from the bot. No fluff, no fake stuff — just what actually runs.
             </p>
 
             <h3>🎫 Ticket System Logic</h3>
@@ -746,6 +751,11 @@
             © 2025 Fourty • All Rights Reserved
         </div>
     </footer>
+
+    <!-- Corner Emoji -->
+    <div class="corner-indicator" title="Fourty">
+        <img src="https://i.ibb.co/0wtMrj9/IMG-8441.png" alt="Fourty">
+    </div>
 
     <script>
         // Enhanced Scroll Animation Observer with Direction Detection
