@@ -20,11 +20,7 @@
     <link rel="icon" type="image/png" href="https://i.ibb.co/HLNGSGSP/fourty-3.png">
     
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Segoe UI', 'Inter', system-ui, sans-serif;
@@ -34,22 +30,18 @@
             overflow-x: hidden;
         }
 
-        /* Scroll Progress Bar */
         .progress-bar {
             position: fixed;
-            top: 0;
-            left: 0;
+            top: 0; left: 0;
             height: 3px;
             background: linear-gradient(90deg, #8b92a8, #a8b0c8);
             z-index: 1001;
             transition: width 0.1s;
         }
 
-        /* Navigation */
         nav {
             position: fixed;
-            top: 0;
-            width: 100%;
+            top: 0; width: 100%;
             background: rgba(18, 22, 33, 0.95);
             backdrop-filter: blur(12px);
             z-index: 1000;
@@ -75,26 +67,19 @@
             letter-spacing: 0.5px;
         }
 
-        nav a:hover {
-            color: #d0d5e0;
-        }
+        nav a:hover { color: #d0d5e0; }
 
         nav a::after {
             content: '';
             position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
+            bottom: -5px; left: 0;
+            width: 0; height: 2px;
             background: #d0d5e0;
             transition: width 0.3s;
         }
 
-        nav a:hover::after {
-            width: 100%;
-        }
+        nav a:hover::after { width: 100%; }
 
-        /* Banner */
         .banner {
             width: 100%;
             height: 450px;
@@ -110,10 +95,7 @@
         .banner::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            top: 0; left: 0; right: 0; bottom: 0;
             background: 
                 radial-gradient(circle at 30% 40%, rgba(139, 146, 168, 0.12) 0%, transparent 50%),
                 radial-gradient(circle at 70% 60%, rgba(168, 176, 200, 0.1) 0%, transparent 50%),
@@ -124,80 +106,38 @@
         .banner::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                repeating-linear-gradient(
-                    0deg,
-                    transparent,
-                    transparent 2px,
-                    rgba(139, 146, 168, 0.03) 2px,
-                    rgba(139, 146, 168, 0.03) 4px
-                );
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(139, 146, 168, 0.03) 2px, rgba(139, 146, 168, 0.03) 4px);
             pointer-events: none;
         }
 
-        @keyframes pulse {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
-        }
+        @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
 
         .banner img {
             max-width: 70%;
             height: auto;
             z-index: 1;
-            opacity: 0;
+            opacity: 0.85;
             filter: drop-shadow(0 20px 60px rgba(139, 146, 168, 0.4)) brightness(0.95);
-            animation: logoFadeIn 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-            animation-delay: 0.3s;
         }
 
-        @keyframes logoFadeIn {
-            0% {
-                opacity: 0;
-                transform: translateY(30px) scale(0.95);
-            }
-            100% {
-                opacity: 0.85;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        /* Container */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 5rem 2.5rem;
         }
 
-        /* Sections */
         section {
             margin-bottom: 8rem;
-            opacity: 0;
+            opacity: 1;
+            transform: translateY(0);
             transition: all 0.9s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        section.visible-up {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        section.hidden-up {
-            opacity: 0;
-            transform: translateY(60px);
-        }
-
-        section.visible-down {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        section.hidden-down {
-            opacity: 0;
-            transform: translateY(-60px);
-        }
+        section.visible-up { opacity: 1; transform: translateY(0); }
+        section.hidden-up { opacity: 0; transform: translateY(60px); }
+        section.visible-down { opacity: 1; transform: translateY(0); }
+        section.hidden-down { opacity: 0; transform: translateY(-60px); }
 
         h1 {
             font-size: 3.5rem;
@@ -232,7 +172,6 @@
             line-height: 1.8;
         }
 
-        /* Code Blocks */
         .code-container {
             background: #111525;
             border-radius: 16px;
@@ -260,12 +199,7 @@
             border-bottom: 1px solid #2a2f3f;
         }
 
-        .dot {
-            width: 13px;
-            height: 13px;
-            border-radius: 50%;
-        }
-
+        .dot { width: 13px; height: 13px; border-radius: 50%; }
         .dot-red { background: #ef4444; }
         .dot-yellow { background: #eab308; }
         .dot-green { background: #22c55e; }
@@ -295,7 +229,6 @@
         .class { color: #f8c8e8; }
         .param { color: #b8d8ff; }
 
-        /* Feature Cards */
         .features {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -329,7 +262,6 @@
             line-height: 1.7;
         }
 
-        /* Stats */
         .stats {
             display: flex;
             justify-content: space-around;
@@ -367,7 +299,6 @@
             font-size: 1.05rem;
         }
 
-        /* Footer */
         footer {
             text-align: center;
             padding: 4rem 2rem;
@@ -400,9 +331,7 @@
             transition: opacity 0.3s;
         }
 
-        .footer-logo:hover {
-            opacity: 1;
-        }
+        .footer-logo:hover { opacity: 1; }
 
         .footer-bottom {
             color: rgba(154, 160, 176, 0.35);
@@ -410,7 +339,6 @@
             margin-top: 0.5rem;
         }
 
-        /* Discord Server Button */
         .discord-btn {
             display: inline-flex;
             align-items: center;
@@ -439,11 +367,8 @@
             vertical-align: middle;
         }
 
-        .discord-btn:hover .discord-icon {
-            opacity: 1;
-        }
+        .discord-btn:hover .discord-icon { opacity: 1; }
 
-        /* Corner Indicator */
         .corner-indicator {
             position: fixed;
             bottom: 5px;
@@ -456,17 +381,9 @@
             transition: opacity 0.3s;
         }
 
-        .corner-indicator:hover {
-            opacity: 1;
-        }
+        .corner-indicator:hover { opacity: 1; }
+        .corner-indicator img { width: 100%; height: 100%; object-fit: contain; }
 
-        .corner-indicator img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        /* Responsive */
         @media (max-width: 768px) {
             h1 { font-size: 2.5rem; }
             h2 { font-size: 2rem; }
@@ -495,90 +412,48 @@
     </div>
 
     <div class="container">
-        <!-- Overview Section -->
         <section id="overview">
             <h1>Fourty</h1>
             <p class="subtitle">
                 A bot that stands out, doesn't fall, and would never leave you unresponsive.
                 Made with nothing but pure logic and love, built fully on Python.
             </p>
-            
             <div class="stats">
-                <div class="stat-item">
-                    <span class="stat-number">50+</span>
-                    <div class="stat-label">Commands</div>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">4.0</span>
-                    <div class="stat-label">Version</div>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">24/7</span>
-                    <div class="stat-label">Uptime</div>
-                </div>
+                <div class="stat-item"><span class="stat-number">50+</span><div class="stat-label">Commands</div></div>
+                <div class="stat-item"><span class="stat-number">4.0</span><div class="stat-label">Version</div></div>
+                <div class="stat-item"><span class="stat-number">24/7</span><div class="stat-label">Uptime</div></div>
             </div>
         </section>
 
-        <!-- Features Section -->
         <section id="features">
             <h2>Core Features</h2>
             <div class="features">
-                <div class="feature-card">
-                    <h3>🎫 Advanced Ticket System</h3>
-                    <p>Multi-category ticket support with persistent data storage, ratings, and automatic transcripts.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>🛡️ Moderation Tools</h3>
-                    <p>Complete moderation suite with mute, kick, ban, timeout, and detailed action logging.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>📊 JSON Database</h3>
-                    <p>Persistent configuration and data storage with automatic backup and recovery.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>🔧 Dual Command System</h3>
-                    <p>Both slash commands and prefix commands for maximum flexibility.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>📢 Announcement Builder</h3>
-                    <p>Discohook-style announcement creator with preview, edit, and scheduling.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>🌐 Flask Integration</h3>
-                    <p>Built-in web server for health checks and external integrations.</p>
-                </div>
+                <div class="feature-card"><h3>🎫 Advanced Ticket System</h3><p>Multi-category ticket support with persistent data storage, ratings, and automatic transcripts.</p></div>
+                <div class="feature-card"><h3>🛡️ Moderation Tools</h3><p>Complete moderation suite with mute, kick, ban, timeout, and detailed action logging.</p></div>
+                <div class="feature-card"><h3>📊 JSON Database</h3><p>Persistent configuration and data storage with automatic backup and recovery.</p></div>
+                <div class="feature-card"><h3>🔧 Dual Command System</h3><p>Both slash commands and prefix commands for maximum flexibility.</p></div>
+                <div class="feature-card"><h3>📢 Announcement Builder</h3><p>Discohook-style announcement creator with preview, edit, and scheduling.</p></div>
+                <div class="feature-card"><h3>🌐 Flask Integration</h3><p>Built-in web server for health checks and external integrations.</p></div>
             </div>
         </section>
 
-        <!-- Code Section -->
         <section id="code">
             <h2>Code Highlights</h2>
-            <p class="subtitle">
-                Real code from the bot, showing you what happens behind every function.
-            </p>
+            <p class="subtitle">Real code from the bot, showing you what happens behind every function.</p>
 
             <h3>🎫 Ticket System Logic</h3>
             <div class="code-container">
-                <div class="code-header">
-                    <div class="dot dot-red"></div>
-                    <div class="dot dot-yellow"></div>
-                    <div class="dot dot-green"></div>
-                    <span class="filename">main.py</span>
-                </div>
+                <div class="code-header"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div><span class="filename">main.py</span></div>
                 <pre><code><span class="keyword">async def</span> <span class="function">close_ticket</span>(<span class="param">channel</span>, <span class="param">closer</span>):
     <span class="keyword">if</span> channel.id <span class="keyword">in</span> CLOSING_CHANNELS: 
         <span class="keyword">return</span> <span class="keyword">False</span>, <span class="string">"Already closing."</span>
-    
     CLOSING_CHANNELS.add(channel.id)
     transcript = <span class="keyword">await</span> create_transcript(channel, <span class="function">str</span>(closer))
-    
     config = get_config(channel.guild.id)
     log_id = config.get(<span class="string">"transcript_channel"</span>)
-    
     ticket_info = TICKET_DATA.get(channel.id, {})
     opener_id = ticket_info.get(<span class="string">"opener_id"</span>)
     rating = get_ticket_rating(channel.name)
-    
     <span class="keyword">if</span> log_id:
         log_chan = bot.get_channel(log_id)
         log_embed = discord.Embed(
@@ -592,18 +467,12 @@
 
             <h3>💾 Persistent Data Storage</h3>
             <div class="code-container">
-                <div class="code-header">
-                    <div class="dot dot-red"></div>
-                    <div class="dot dot-yellow"></div>
-                    <div class="dot dot-green"></div>
-                    <span class="filename">main.py</span>
-                </div>
+                <div class="code-header"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div><span class="filename">main.py</span></div>
                 <pre><code><span class="keyword">def</span> <span class="function">load_json</span>(<span class="param">fn</span>, <span class="param">default</span>):
     <span class="keyword">if not</span> os.path.exists(fn):
         <span class="keyword">with</span> open(fn, <span class="string">"w"</span>) <span class="keyword">as</span> f: 
             json.dump(default, f, indent=<span class="number">2</span>)
         <span class="keyword">return</span> default
-    
     <span class="keyword">try</span>:
         <span class="keyword">with</span> open(fn, <span class="string">"r"</span>) <span class="keyword">as</span> f: 
             <span class="keyword">return</span> json.load(f)
@@ -618,12 +487,7 @@
 
             <h3>🛡️ Moderation with Hierarchy</h3>
             <div class="code-container">
-                <div class="code-header">
-                    <div class="dot dot-red"></div>
-                    <div class="dot dot-yellow"></div>
-                    <div class="dot dot-green"></div>
-                    <span class="filename">main.py</span>
-                </div>
+                <div class="code-header"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div><span class="filename">main.py</span></div>
                 <pre><code><span class="keyword">def</span> <span class="function">check_hierarchy</span>(<span class="param">author</span>, <span class="param">target</span>):
     <span class="keyword">if</span> target.id == author.guild.owner_id: 
         <span class="keyword">return</span> <span class="keyword">False</span>
@@ -634,10 +498,8 @@
 <span class="keyword">async def</span> <span class="function">log_moderation</span>(<span class="param">guild</span>, <span class="param">action</span>, <span class="param">member</span>, <span class="param">moderator</span>, <span class="param">reason</span>=<span class="keyword">None</span>):
     config = get_config(guild.id)
     channel_id = config.get(<span class="string">"moderation_log_channel"</span>)
-    
     <span class="keyword">if not</span> channel_id: 
         <span class="keyword">return</span>
-    
     embed = discord.Embed(
         title=<span class="string">f"🛡️ {action}"</span>,
         color=COLOR_SECONDARY,
@@ -649,26 +511,11 @@
 
             <h3>📢 Announcement Builder Modal</h3>
             <div class="code-container">
-                <div class="code-header">
-                    <div class="dot dot-red"></div>
-                    <div class="dot dot-yellow"></div>
-                    <div class="dot dot-green"></div>
-                    <span class="filename">main.py</span>
-                </div>
+                <div class="code-header"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div><span class="filename">main.py</span></div>
                 <pre><code><span class="keyword">class</span> <span class="function">AnnouncementModal</span>(Modal, title=<span class="string">"📝 Announcement Builder"</span>):
-    title_input = TextInput(
-        label=<span class="string">"Title"</span>, 
-        required=<span class="keyword">True</span>
-    )
-    description_input = TextInput(
-        label=<span class="string">"Description"</span>, 
-        style=discord.TextStyle.long
-    )
-    color_input = TextInput(
-        label=<span class="string">"Color"</span>, 
-        required=<span class="keyword">False</span>
-    )
-    
+    title_input = TextInput(label=<span class="string">"Title"</span>, required=<span class="keyword">True</span>)
+    description_input = TextInput(label=<span class="string">"Description"</span>, style=discord.TextStyle.long)
+    color_input = TextInput(label=<span class="string">"Color"</span>, required=<span class="keyword">False</span>)
     <span class="keyword">async def</span> <span class="function">on_submit</span>(<span class="keyword">self</span>, interaction):
         embed = discord.Embed(
             title=<span class="keyword">self</span>.title_input.value,
@@ -678,60 +525,27 @@
         ANNOUNCEMENT_CACHE[interaction.user.id][<span class="string">"embed"</span>] = embed</code></pre>
             </div>
 
-            <h3> Flask Health Server</h3>
+            <h3>Flask Health Server</h3>
             <div class="code-container">
-                <div class="code-header">
-                    <div class="dot dot-red"></div>
-                    <div class="dot dot-yellow"></div>
-                    <div class="dot dot-green"></div>
-                    <span class="filename">main.py</span>
-                </div>
+                <div class="code-header"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div><span class="filename">main.py</span></div>
                 <pre><code>flask_app = Flask(__name__)
-
 <span class="decorator">@flask_app.route</span>(<span class="string">"/"</span>)
 <span class="keyword">def</span> <span class="function">home</span>(): 
     <span class="keyword">return</span> <span class="string">"✅ Fourty's Details Bot Online"</span>
-
 <span class="keyword">def</span> <span class="function">run_flask</span>(): 
     flask_app.run(host=<span class="string">"0.0.0.0"</span>, port=<span class="number">8080</span>, debug=<span class="keyword">False</span>)
-
 <span class="keyword">def</span> <span class="function">keep_alive</span>(): 
     Thread(target=run_flask, daemon=<span class="keyword">True</span>).start()</code></pre>
             </div>
         </section>
 
-        <!-- Commands Section -->
         <section id="commands">
             <h2>Available Commands</h2>
             <div class="features">
-                <div class="feature-card">
-                    <h3>🎫 Ticket Commands</h3>
-                    <p><code>/panel</code> - Display ticket panel<br>
-                    <code>/close</code> - Close current ticket<br>
-                    <code>/add</code> - Add user to ticket<br>
-                    <code>/remove</code> - Remove user from ticket</p>
-                </div>
-                <div class="feature-card">
-                    <h3>🛡️ Moderation</h3>
-                    <p><code>/mute</code> - Timeout a user<br>
-                    <code>/kick</code> - Kick from server<br>
-                    <code>/ban</code> - Ban from server<br>
-                    <code>/purge</code> - Delete messages</p>
-                </div>
-                <div class="feature-card">
-                    <h3>⚙️ Utilities</h3>
-                    <p><code>/whois</code> - User information<br>
-                    <code>/serverinfo</code> - Server stats<br>
-                    <code>/announce</code> - Create announcement<br>
-                    <code>/poll</code> - Create poll</p>
-                </div>
-                <div class="feature-card">
-                    <h3>📦 Packages</h3>
-                    <p><code>/pk1</code> - Package 1 questionnaire<br>
-                    <code>/pk2</code> - Package 2 questionnaire<br>
-                    <code>/cb</code> - Custom Bot questionnaire<br>
-                    <code>/cfs</code> - FiveM Script questionnaire</p>
-                </div>
+                <div class="feature-card"><h3>🎫 Ticket Commands</h3><p><code>/panel</code> - Display ticket panel<br><code>/close</code> - Close current ticket<br><code>/add</code> - Add user to ticket<br><code>/remove</code> - Remove user from ticket</p></div>
+                <div class="feature-card"><h3>🛡️ Moderation</h3><p><code>/mute</code> - Timeout a user<br><code>/kick</code> - Kick from server<br><code>/ban</code> - Ban from server<br><code>/purge</code> - Delete messages</p></div>
+                <div class="feature-card"><h3>⚙️ Utilities</h3><p><code>/whois</code> - User information<br><code>/serverinfo</code> - Server stats<br><code>/announce</code> - Create announcement<br><code>/poll</code> - Create poll</p></div>
+                <div class="feature-card"><h3>📦 Packages</h3><p><code>/pk1</code> - Package 1 questionnaire<br><code>/pk2</code> - Package 2 questionnaire<br><code>/cb</code> - Custom Bot questionnaire<br><code>/cfs</code> - FiveM Script questionnaire</p></div>
             </div>
         </section>
     </div>
@@ -747,9 +561,7 @@
             <span class="footer-text">Programmed & Coded with 🤍 by @fourty2 (on almost everything)</span>
             <img src="https://i.ibb.co/HLNGSGSP/fourty-3.png" alt="Fourty Logo" class="footer-logo">
         </div>
-        <div class="footer-bottom">
-            © 2026 Fourty • All Rights Reserved
-        </div>
+        <div class="footer-bottom">© 2026 Fourty • All Rights Reserved</div>
     </footer>
 
     <!-- Corner Emoji -->
@@ -758,20 +570,15 @@
     </div>
 
     <script>
-        // Enhanced Scroll Animation Observer with Direction Detection
+        // Scroll Animation with Direction Detection
         let lastScrollTop = 0;
         const sections = document.querySelectorAll('section');
-        
-        const observerOptions = {
-            threshold: 0.15,
-            rootMargin: "0px 0px -100px 0px"
-        };
+        const observerOptions = { threshold: 0.15, rootMargin: "0px 0px -100px 0px" };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
                 const isScrollingDown = currentScrollTop > lastScrollTop;
-                
                 if (entry.isIntersecting) {
                     if (isScrollingDown) {
                         entry.target.classList.remove('hidden-up', 'visible-down', 'hidden-down');
@@ -789,7 +596,6 @@
                         entry.target.classList.add('hidden-down');
                     }
                 }
-                
                 lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
             });
         }, observerOptions);
@@ -812,39 +618,30 @@
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         });
 
-        // Touch device optimization
+        // Touch Optimization
         let touchStartY = 0;
-        document.addEventListener('touchstart', (e) => {
-            touchStartY = e.touches[0].clientY;
-        });
-
+        document.addEventListener('touchstart', (e) => { touchStartY = e.touches[0].clientY; });
         document.addEventListener('touchmove', (e) => {
             const touchY = e.touches[0].clientY;
             const touchDelta = touchStartY - touchY;
-            
             sections.forEach(section => {
                 if (section.classList.contains('visible-up') || section.classList.contains('visible-down')) {
                     const rect = section.getBoundingClientRect();
                     if (rect.top > window.innerHeight || rect.bottom < 0) {
                         section.classList.remove('visible-up', 'visible-down');
-                        if (touchDelta > 0) {
-                            section.classList.add('hidden-up');
-                        } else {
-                            section.classList.add('hidden-down');
-                        }
+                        if (touchDelta > 0) section.classList.add('hidden-up');
+                        else section.classList.add('hidden-down');
                     }
                 }
             });
         });
+
+        // Fallback: Show content if JS fails
+        document.body.classList.add('loaded');
     </script>
 </body>
 </html>
